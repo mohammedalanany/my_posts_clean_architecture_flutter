@@ -1,30 +1,52 @@
+import 'package:myposts_clean_architecture/core/databases/api/end_points.dart';
+
 import '../../domain/entities/post_entitiy.dart';
 
+//هنا الkeys  اللى بترجع فى الموديل وانتا مش ضايفها فى  entety
 class PostModel extends PostEntity {
-  //هنا الkeys  اللى بترجع فى الموديل وانتا مش ضايفها فى  entety
-  final int userId;
+  const PostModel({
+    int? id,
+    String? author,
+    String? title,
+    String? description,
+    String? url,
+    String? urlToImage,
+    String? publishedAt,
+    String? content,
+  }) : super(
+          id: id,
+          author: author,
+          title: title,
+          description: description,
+          url: url,
+          urlToImage: urlToImage,
+          publishedAt: publishedAt,
+          content: content,
+        );
 
-  PostModel({
-    required super.id,
-    required super.title,
-    required super.body,
-    required this.userId,
-  });
-//بخزن هنا الداتا اللى جايه من  api
-  factory PostModel.fromJson(Map<dynamic, dynamic> json) {
+  factory PostModel.fromJson(Map<String, dynamic> map) {
     return PostModel(
-        id: json['id'], // json["id"]ممكن عادى نكتبها
-        title: json['title'],
-        body: json['body'],
-        userId: json['userId']);
+      author: map['author'] ?? "",
+      title: map['title'] ?? "",
+      description: map['description'] ?? "",
+      url: map['url'] ?? "",
+      urlToImage: map['urlToImage'] != null && map['urlToImage'] != ""
+          ? map['urlToImage']
+          : EndPoints.kDefaultImage,
+      publishedAt: map['publishedAt'] ?? "",
+      content: map['content'] ?? "",
+    );
   }
-//دى بخزن الداتا فى الكاش للجهاز
-  Map<dynamic, dynamic> toJson() {
-    return {
-      id: id, // json["id"]ممكن عادى نكتبها
-      title: title,
-      body: body,
-      userId: userId
-    };
+
+  factory PostModel.fromEntity(PostModel entity) {
+    return PostModel(
+        id: entity.id,
+        author: entity.author,
+        title: entity.title,
+        description: entity.description,
+        url: entity.url,
+        urlToImage: entity.urlToImage,
+        publishedAt: entity.publishedAt,
+        content: entity.content);
   }
 }

@@ -7,8 +7,12 @@ class PostsRemoteDataSource {
 
   PostsRemoteDataSource({required this.api});
   Future<List<PostModel>> getPostsRemoteDataSource() async {
-    final response = await api.get("${EndPoints.post}");
-    print(response);
-    return (response as List).map((i) => PostModel.fromJson(i)).toList();
+    final response = await api.get('${EndPoints.newsAPIBaseURL}',
+        queryParameters: EndPoints.queryParameters);
+    print(response['articles']);
+
+    return (response['articles'] as List)
+        .map((i) => PostModel.fromJson(i))
+        .toList();
   }
 }

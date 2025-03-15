@@ -105,7 +105,7 @@ class PostWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(
-                  post!.body ?? '',
+                  post!.description ?? '',
                   maxLines: 2,
                 ),
               ),

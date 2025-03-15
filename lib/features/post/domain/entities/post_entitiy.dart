@@ -2,21 +2,36 @@ import 'package:equatable/equatable.dart';
 
 class PostEntity extends Equatable {
   final int? id;
+  final String? author;
   final String? title;
-  final String? body;
+  final String? description;
+  final String? url;
+  final String? urlToImage;
+  final String? publishedAt;
+  final String? content;
 
   const PostEntity({
-    required this.id,
-    required this.title,
-    required this.body,
+    this.id,
+    this.author,
+    this.title,
+    this.description,
+    this.url,
+    this.urlToImage,
+    this.publishedAt,
+    this.content,
   });
 
   @override
   List<Object?> get props {
     return [
       id,
+      author,
       title,
-      body,
+      description,
+      url,
+      urlToImage,
+      publishedAt,
+      content,
     ];
   }
 }
