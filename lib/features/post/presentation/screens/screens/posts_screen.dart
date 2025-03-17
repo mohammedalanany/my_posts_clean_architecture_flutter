@@ -6,6 +6,8 @@ import '../cubit/posts_state.dart';
 import '../widgets/post_tile.dart';
 
 class PostsScreen extends StatelessWidget {
+  static const String routeName = '/posts_screen';
+
   const PostsScreen({super.key});
 
   @override
