@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myposts_clean_architecture/features/post/presentation/screens/cubit/posts_state.dart';
-;
+
 import '../../../domain/usecases/get_posts.dart';
 import '../../../domain/usecases/get_posts_details.dart';
 
